@@ -1,6 +1,3 @@
-# TODO:
-# - move desktop to desktopdir
-
 Summary:	kxmleditor - tool to display and edit contents of XML file for KDE
 Summary(pl):	kxmleditor - narzêdzie do ogl±dania i edycji plików XML dla KDE.
 Name:		kxmleditor
@@ -36,7 +33,7 @@ wsparcie dla technologii DCOP, edycja skompresowanych plików KOffice.
 
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
-kde_appsdir="%{_applnkdir}"; export kde_appsdir
+kde_appsdir="%{_desktopdir}"; export kde_appsdir
 
 %configure \
 	--enable-final \
@@ -51,8 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Editors
-mv $RPM_BUILD_ROOT%{_applnkdir}/Applications/%{name}.desktop  $RPM_BUILD_ROOT%{_applnkdir}/Editors
+mv $RPM_BUILD_ROOT%{_desktopdir}/Applications/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}
 
 %find_lang %{name} --with-kde
 
@@ -69,6 +65,6 @@ rm -rf $RPM_BUILD_ROOT
 # Do we really need *.la ?
 %{_libdir}/*.la
 %{_datadir}/apps/%{name}
-%{_applnkdir}/Editors/*.desktop
+%{_desktopdir}/Editors/*.desktop
 %{_pixmapsdir}/*/*/apps/*
 %{_datadir}/services/*.desktop
