@@ -1,19 +1,15 @@
---- kxmleditor-1.1.0/kxmleditor/kxmleditor.desktop.orig	Sat Jan 10 20:56:10 2004
-+++ kxmleditor-1.1.0/kxmleditor/kxmleditor.desktop	Thu Jul 15 14:04:08 2004
-@@ -4,12 +4,13 @@
+--- kxmleditor-1.1.3/kxmleditor/kxmleditor.desktop.orig	2004-07-11 18:16:58.000000000 +0200
++++ kxmleditor-1.1.3/kxmleditor/kxmleditor.desktop	2004-09-14 14:24:53.049404512 +0200
+@@ -4,9 +4,10 @@
  Icon=kxmleditor.png
- MiniIcon=kxmleditor.png
  DocPath=kxmleditor/index.html
--Comment=
--Comment[de]=
-+Comment=XML Editor
- Comment[fi]=XML-editori
+ Comment=XML editor
 +Comment[pl]=Edytor XML
+ Comment[fi]=XML-editori
  Terminal=false
- Name=KXMLEditor
- Name[de]=KXMLEditor
+-Name=KXML Editor
++Name=Kxmleditor
  MimeType=text/xml;
  Encoding=UTF-8
 -Categories=Application;Development;TextEditor;KDE;
 +Categories=Qt;KDE;Development;TextEditor;
-+# vi: encoding=utf-8
