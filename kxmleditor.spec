@@ -1,18 +1,18 @@
 Summary:	kxmleditor - tool to display and edit contents of XML file for KDE
 Summary(pl):	kxmleditor - narzêdzie do ogl±dania i edycji plików XML dla KDE
 Name:		kxmleditor
-Version:	1.0.0
+Version:	1.1.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	0f34b6b8a5aa5781cb7f48c5fbcae10d
+Source0:	http://dl.sourceforge.net/kxmleditor/%{name}-%{version}.tar.gz
+# Source0-md5:	6c2f0acf7c434267040091ad356b0f04
+Patch0:		%{name}-desktop.patch
 URL:		http://kxmleditor.sourceforge.net/
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 9:3.0
+BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
 KXML Editor is program, that display and edit contents of XML file.
@@ -28,11 +28,11 @@ wsparcie dla technologii DCOP, edycja skompresowanych plików KOffice.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-cp /usr/share/automake/config.sub admin
-
-kde_htmldir="%{_htmldir}"; export kde_htmldir
+cp -f /usr/share/automake/config.sub admin
+kde_htmldir="%{_kdedocdir}"; export kde_htmldir
 %configure \
 	--enable-final \
 	--%{!?debug:dis}%{?debug:en}able-debug \
