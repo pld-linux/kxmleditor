@@ -5,17 +5,17 @@ Version:	1.1.3
 Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/kxmleditor/%{name}-%{version}.tar.gz
 # Source0-md5:	0edae2359e6260524481b920d58580da
 Source1:	http://ep09.pld-linux.org/~djurban/kde/kde-common-admin.tar.bz2
 # Source1-md5:	e5c75ce22f1525b13532b519ae88e7a4
 Patch0:		%{name}-desktop.patch
 URL:		http://kxmleditor.sourceforge.net/
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  kdelibs-devel >= 9:3.2.0
-BuildRequires:  unsermake >= 040511
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	unsermake >= 040511
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
