@@ -1,13 +1,16 @@
 #TODO:
 #  - fix findlang
 #  - place .desktop
-#  - test on Ac
+#  - Fix why boils out:
+#      kdecore (KLibLoader): WARNING: library=libkxmleditorpart: file=/usr/X11R6/lib/libkxmleditorpart.la: /usr/X11R6/lib/libkxmleditorpart.so.1: undefined symbol: languageChange__13DlgSearchBase
+#      kxmleditor: FATAL: KXMLEditorShell::KXMLEditorShell no libkxmleditorpart found
+
 
 Summary:	kxmleditor -  tool to display and edit contents of XML file for KDE
 Summary(pl):	kxmleditor - narzêdzie do ogl±dania i edycji plików XML dla KDE.
 Name:		kxmleditor
 Version:	0.8.1
-Release:	1
+Release:	0.9
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
@@ -16,7 +19,7 @@ URL:		http://%{name}.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-#%%define         _prefix         /usr/X11R6
+%define         _prefix         /usr/X11R6
 %define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
@@ -50,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 #install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/Databases
 # mv $RPM_BUILD_ROOT%{_applnkdir}/Office/*.desktop $RPM_BUILD_ROOT/%{_applnkdir}/Office/Databases/
 
-#%%find_lang %{name} --with-kde
+# %%find_lang %{name} --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
