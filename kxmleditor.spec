@@ -1,15 +1,14 @@
 #TODO:
-#  - place .desktop
 
 Summary:	kxmleditor - tool to display and edit contents of XML file for KDE
 Summary(pl):	kxmleditor - narzêdzie do ogl±dania i edycji plików XML dla KDE.
 Name:		kxmleditor
-Version:	0.9.2
+Version:	1.0.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	33f4fb06a4a5864f4dbeecfa6707c12a
+# Source0-md5:	0f34b6b8a5aa5781cb7f48c5fbcae10d
 URL:		http://kxmleditor.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -32,14 +31,17 @@ wsparcie dla technologii DCOP, edycja skompresowanych plików KOffice.
 %setup -q
 
 %build
-cp /usr/share/automake/config.sub admin
+#cp /usr/share/automake/config.sub admin
 
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
 
 %configure \
-	--with-qt-libraries=%{_libdir}
+	--enable-final \
+	--disable-debug \
+	--with-xinerama
+	#--with-qt-libraries=%{_libdir} \
 %{__make}
 
 %install
@@ -49,8 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Editors
-# mv $RPM_BUILD_ROOT%{_applnkdir}/Office/*.desktop $RPM_BUILD_ROOT%{_applnkdir}/Office/Databases
-mv $RPM_BUILD_ROOT%{_applnkdir}/Applications/kxmleditor.desktop  $RPM_BUILD_ROOT%{_applnkdir}/Editors
+mv $RPM_BUILD_ROOT%{_applnkdir}/Applications/%{name}.desktop  $RPM_BUILD_ROOT%{_applnkdir}/Editors
 
 %find_lang %{name} --with-kde
 
@@ -60,10 +61,9 @@ rm -rf $RPM_BUILD_ROOT
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f kxmleditor.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-# If we really need *.la ?
 %attr(755,root,root) %{_libdir}/*.so*
 %{_libdir}/*.la
 %{_datadir}/apps/%{name}
