@@ -1,4 +1,5 @@
-#TODO:
+# TODO:
+# - move desktop to desktopdir
 
 Summary:	kxmleditor - tool to display and edit contents of XML file for KDE
 Summary(pl):	kxmleditor - narzêdzie do ogl±dania i edycji plików XML dla KDE.
@@ -39,7 +40,7 @@ kde_appsdir="%{_applnkdir}"; export kde_appsdir
 
 %configure \
 	--enable-final \
-	--disable-debug \
+	--%{!?debug:dis}%{?debug:en}able-debug \
 	--with-xinerama
 	#--with-qt-libraries=%{_libdir} \
 %{__make}
@@ -65,6 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*.so*
+# Do we really need *.la ?
 %{_libdir}/*.la
 %{_datadir}/apps/%{name}
 %{_applnkdir}/Editors/*.desktop
