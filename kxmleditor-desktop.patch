@@ -12,4 +12,4 @@
  MimeType=text/xml;
  Encoding=UTF-8
 -Categories=Application;Development;TextEditor;KDE;
-+Categories=Qt;KDE;Development;TextEditor;
++Categories=Qt;KDE;TextEditor;
