@@ -1,17 +1,15 @@
 #TODO:
-#  - fix findlang
 #  - place .desktop
-#  - test on Ac
 
 Summary:	kxmleditor - tool to display and edit contents of XML file for KDE
 Summary(pl):	kxmleditor - narzêdzie do ogl±dania i edycji plików XML dla KDE.
 Name:		kxmleditor
-Version:	0.8.1
-Release:	2
+Version:	0.8.4
+Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	b3406ad8ce88443e24dc8073c2e0eb5a
+# Source0-md5:	c49040e934898c4682f5cdf78abc1fcf
 URL:		http://kxmleditor.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
