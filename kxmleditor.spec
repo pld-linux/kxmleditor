@@ -1,16 +1,20 @@
 Summary:	kxmleditor - tool to display and edit contents of XML file for KDE
 Summary(pl):	kxmleditor - narzêdzie do ogl±dania i edycji plików XML dla KDE
 Name:		kxmleditor
-Version:	1.1.0
-Release:	2
+Version:	1.1.3
+Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
-Source0:	http://dl.sourceforge.net/kxmleditor/%{name}-%{version}.tar.gz
-# Source0-md5:	6c2f0acf7c434267040091ad356b0f04
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	0edae2359e6260524481b920d58580da
+Source1:	http://ep09.pld-linux.org/~djurban/kde/kde-common-admin.tar.bz2
+# Source1-md5:	e5c75ce22f1525b13532b519ae88e7a4
 Patch0:		%{name}-desktop.patch
 URL:		http://kxmleditor.sourceforge.net/
-BuildRequires:	automake
-BuildRequires:	kdelibs-devel >= 9:3.0
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  kdelibs-devel >= 9:3.2.0
+BuildRequires:  unsermake >= 040511
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -27,17 +31,20 @@ u¿ywanie parsera DOM z biblioteki Qt, wsparcie dla technologii KParts,
 wsparcie dla technologii DCOP, edycja skompresowanych plików KOffice.
 
 %prep
-%setup -q
+%setup -q -a1
 %patch0 -p1
 
 %build
 cp -f /usr/share/automake/config.sub admin
-kde_htmldir="%{_kdedocdir}"; export kde_htmldir
+export UNSERMAKE=/usr/share/unsermake/unsermake
+%{__make} -f admin/Makefile.common cvs
+
 %configure \
 	--enable-final \
 	--%{!?debug:dis}%{?debug:en}able-debug \
 	--with-qt-libraries=%{_libdir} \
 	--with-xinerama
+
 %{__make}
 
 %install
@@ -45,7 +52,10 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir=%{_kdedocdir} \
+	kde_libs_htmldir=%{_kdedocdir}
+
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}
 
