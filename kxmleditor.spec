@@ -7,7 +7,7 @@ Summary:	kxmleditor - tool to display and edit contents of XML file for KDE
 Summary(pl):	kxmleditor - narzêdzie do ogl±dania i edycji plików XML dla KDE.
 Name:		kxmleditor
 Version:	0.8.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
@@ -45,8 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
 
-#install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/Databases
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Editors
 # mv $RPM_BUILD_ROOT%{_applnkdir}/Office/*.desktop $RPM_BUILD_ROOT/%{_applnkdir}/Office/Databases/
+mv $RPM_BUILD_ROOT%{_applnkdir}/Applications/kxmleditor.desktop  $RPM_BUILD_ROOT%{_applnkdir}/Editors
 
 %find_lang %{name} --with-kde
 
@@ -59,11 +60,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -f kxmleditor.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-
 # If we really need *.la ?
-%attr(755,root,root) %{_libdir}/*
-
+%attr(755,root,root) %{_libdir}/*.so*
+%{_libdir}/*.la
 %{_datadir}/apps/%{name}
-%{_applnkdir}/Applications/*.desktop
+%{_applnkdir}/Editors/*.desktop
 %{_pixmapsdir}/*/*/apps/*
 %{_datadir}/services/*.desktop
