@@ -44,10 +44,11 @@ kde_appsdir="%{_applnkdir}"; export kde_appsdir
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Editors
-# mv $RPM_BUILD_ROOT%{_applnkdir}/Office/*.desktop $RPM_BUILD_ROOT/%{_applnkdir}/Office/Databases/
+# mv $RPM_BUILD_ROOT%{_applnkdir}/Office/*.desktop $RPM_BUILD_ROOT%{_applnkdir}/Office/Databases
 mv $RPM_BUILD_ROOT%{_applnkdir}/Applications/kxmleditor.desktop  $RPM_BUILD_ROOT%{_applnkdir}/Editors
 
 %find_lang %{name} --with-kde
