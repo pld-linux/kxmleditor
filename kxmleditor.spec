@@ -1,5 +1,5 @@
 Summary:	kxmleditor - tool to display and edit contents of XML file for KDE
-Summary(pl):	kxmleditor - narz阣zie do ogl眃ania i edycji plik體 XML dla KDE
+Summary(pl.UTF-8):   kxmleditor - narz臋dzie do ogl膮dania i edycji plik贸w XML dla KDE
 Name:		kxmleditor
 Version:	1.1.4
 Release:	1
@@ -23,11 +23,11 @@ Main features: Drag and drop editing, clipboard support, use of DOM
 level 2 Qt library parser, KParts technology support, DCOP technology
 support, editing KOffice compressed files.
 
-%description -l pl
-KXML Editor jest programem kt髍y wy秝ietla i edytuje zawarto舵 plik體
-XML. G丑wne w砤禼iwo禼i: edycja drag&drop, wsparcie dla schowka,
-u縴wanie parsera DOM z biblioteki Qt, wsparcie dla technologii KParts,
-wsparcie dla technologii DCOP, edycja skompresowanych plik體 KOffice.
+%description -l pl.UTF-8
+KXML Editor jest programem kt贸ry wy艣wietla i edytuje zawarto艣膰 plik贸w
+XML. G艂贸wne w艂a艣ciwo艣ci: edycja drag&drop, wsparcie dla schowka,
+u偶ywanie parsera DOM z biblioteki Qt, wsparcie dla technologii KParts,
+wsparcie dla technologii DCOP, edycja skompresowanych plik贸w KOffice.
 
 %prep
 %setup -q -a1
