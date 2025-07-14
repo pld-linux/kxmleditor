@@ -31,7 +31,7 @@ wsparcie dla technologii DCOP, edycja skompresowanych plików KOffice.
 
 %prep
 %setup -q -a1
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 cp -f /usr/share/automake/config.sub admin
